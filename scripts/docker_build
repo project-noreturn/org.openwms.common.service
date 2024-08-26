@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t registry.openwms.cloud/rebound-registry/org.openwms.common.service:latest .
+docker build -t rc2.openwms.cloud/org.openwms.common.service:latest .
