@@ -10,7 +10,7 @@
         <relativePath />
     </parent>
     <artifactId>org.openwms.common.service</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>3.0.0-RB-SNAPSHOT</version>
     <name>OpenWMS.org COMMON: Base Service</name>
     <description>Essential functionality on common resources like Locations, LocationGroups and TransportUnits</description>
     <url>https://openwms.github.io/${project.artifactId}/index.html</url>
@@ -21,16 +21,26 @@
     </issueManagement>
 
     <distributionManagement>
+        <repository>
+            <id>rebound-repo</id>
+            <name>ReBound Repository</name>
+            <url>https://repo.openwms.cloud/repository/rebound-repo</url>
+        </repository>
+        <snapshotRepository>
+            <id>rebound-repo</id>
+            <name>ReBound Repository</name>
+            <url>https://repo.openwms.cloud/repository/rebound-repo</url>
+        </snapshotRepository>
         <site>
             <id>site</id>
-            <url>scm:git:git@github.com:openwms/${project.artifactId}.git</url>
+            <url>scm:git:git@github.com:project-noreturn/${project.artifactId}.git</url>
         </site>
     </distributionManagement>
 
     <scm>
-        <url>https://github.com/openwms/${project.artifactId}</url>
-        <connection>scm:git:https://${scmuser}github.com/openwms/${project.artifactId}.git</connection>
-        <developerConnection>scm:git:https://${scmuser}github.com/openwms/${project.artifactId}.git</developerConnection>
+        <url>https://github.com/project-noreturn/${project.artifactId}</url>
+        <connection>scm:git:https://${scmuser}github.com/project-noreturn/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:https://${scmuser}github.com/project-noreturn/${project.artifactId}.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -54,7 +64,7 @@
 
     <ciManagement>
         <system>GitHub</system>
-        <url>https://github.com/openwms/${project.artifactId}/actions</url>
+        <url>https://github.com/project-noreturn/${project.artifactId}/actions</url>
         <notifiers>
             <notifier>
                 <type>mail</type>
@@ -136,41 +146,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>client-build</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>client</classifier>
-                            <includes>
-                                <include>**/api/**/*.class</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>full-build</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>all</classifier>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>test-jar</id>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -466,6 +441,17 @@
     </dependencies>
 
     <repositories>
+        <repository>
+            <id>rebound-repo</id>
+            <name>ReBound Repository</name>
+            <url>https://repo.openwms.cloud/repository/rebound-repo</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
         <repository>
             <id>sonatype-nexus-snapshots</id>
             <name>Snapshot Repository</name>
